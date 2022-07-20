@@ -1,0 +1,50 @@
+$delay : 1.5;
+$easing: cubic-bezier(.8, 0, .2, 1);
+
+.phase-text {
+  position: fixed;
+  padding: 30px;
+  z-index: 1;
+  font-family: sans-serif;
+
+  p {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn forwards .6s $easing #{$delay}s;
+
+    &.phase-text__subject {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    &.phase-text__description {
+      animation-delay: #{$delay + .1}s;
+      margin-bottom: 6px
+    }
+    &.phase-text__note {
+      animation-delay: #{$delay + .2}s;
+      font-size: 12px;
+    }
+  }
+
+  &.x--LEFT {left: 0;}
+  &.x--CENTER {left: 50%; transform: translateX(-50%); text-align: center; }
+  &.x--RIGHT {right: 0}
+
+  &.y--TOP {top: 0}
+  &.y--CENTER { top: 50%; transform: translateY(-50%);}
+  &.y--BOTTOM {bottom: 0}
+
+  &.y--CENTER.x--CENTER { transform: translate(-50%, -50%); }
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

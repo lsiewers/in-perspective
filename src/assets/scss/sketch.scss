@@ -1,0 +1,112 @@
+$easing: cubic-bezier(0.83, 0, 0.17, 1);
+
+input {
+  appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+
+.thought-input {
+  transform: translate(-50%, 0);
+  position: absolute;
+  bottom: 50px; left: 50%;
+  border-bottom: black solid 2px;
+  padding: 6px 0;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  width: 240px;
+
+  &:not(.invisible) {
+    transition:
+      opacity $easing .4s,
+      transform $easing .4s;
+  }
+
+  &.invisible {
+    opacity: 0;
+    transform: translate(-50%, 5px);
+    pointer-events: none;
+  }
+
+  &.SORT {
+    transform: translate(-50%, 0) scale(.75);
+  }
+}
+
+//////
+.subject {
+  z-index: -1;
+
+  &::before {
+    content: '';
+    display: block;
+    z-index: -2;
+  }
+
+  &, &::before {
+    position: fixed;
+    top:50%; left: 50%;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: color, transform, background, opacity;
+    transition-duration: 1.8s;
+    transition-timing-function: $easing;
+
+    background-color: rgb(247, 247, 247);
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+  }
+
+  &.SUBJECT, &.SUBJECT::before {
+    transition:
+      color $easing .8s,
+      background $easing .8s,
+      opacity $easing .8s;
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+
+  &.SUBJECT, &.SUBJECT::before { transform: translate(-50%, -50%) scale(1.5); }
+
+  &.SUBJECT, &.NEGATIVE, &.PP, &.SORT {
+    &, &::before { opacity: 1; }
+  }
+
+  &.NEGATIVE {
+    &, &::before {
+      transform: translate(-50%, -50%) scale(1);
+      background-color: rgb(217, 217, 217);
+      color: rgb(0, 0, 0, 0.5);
+    }
+  }
+
+  &.SORT {
+    &, &::before {
+      transform: translate(-50%, -50%) scale(.8);
+    }
+  }
+
+  input {
+    text-align: center;
+    width: 80%;
+    font-size: 18px;
+
+    position: absolute;
+    top:50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  input.editable {
+      border-bottom: black solid 2px;
+      color: rgb(0, 0, 0);
+  }
+
+  input:not(.editable) {
+    pointer-events: none;
+    color: rgba(0, 0, 0, .5);
+  }
+}
