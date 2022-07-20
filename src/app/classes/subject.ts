@@ -1,0 +1,28 @@
+import * as p5 from 'p5';
+import { Phases } from '../enums/phases';
+import { getPhaseKeyText } from '../functions/convertEnums';
+
+export class Subject {
+  p: p5;
+  div: p5.Element;
+  input: p5.Element;
+
+  constructor(p5: p5, div: p5.Element, input: p5.Element) {
+    this.p = p5;
+    this.div = div;
+    this.input = input;
+
+
+    this.input.elt.focus();
+  }
+
+  setClasses(phase: Phases) {
+    if (phase === Phases.SUBJECT) { this.input.hasClass('editable') ? null : this.input.addClass('editable')}
+    else { this.input.hasClass('editable') ? this.input.toggleClass('editable') : null }
+
+    const phaseT = getPhaseKeyText(phase)!;
+    this.div.elt.classList = ['subject'];
+
+    if (!this.div.hasClass(phaseT)) { this.div.addClass(phaseT); }
+  }
+}
