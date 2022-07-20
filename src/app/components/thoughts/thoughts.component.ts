@@ -51,7 +51,7 @@ export class ThoughtsComponent implements OnInit {
         }
       });
 
-      inputEL = p.createInput().addClass('thought-input').addClass('invisible').attribute('placeholder', 'iets wat stess geeft...');
+      inputEL = p.createInput().addClass('thought-input').addClass('invisible').attribute('placeholder', 'iets wat stress geeft...');
       inputEL.elt.addEventListener('change', () => {
         this.addThought(p, inputEL, thoughts);
         transformingT = thoughts.length - 1;

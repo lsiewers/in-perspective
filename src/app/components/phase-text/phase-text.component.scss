@@ -25,6 +25,7 @@ $easing: cubic-bezier(.8, 0, .2, 1);
     &.phase-text__note {
       animation-delay: #{$delay + .2}s;
       font-size: 12px;
+      color: rgb(150, 150, 150);
     }
   }
 
