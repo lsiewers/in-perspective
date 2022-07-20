@@ -1,3 +1,27 @@
+.gradient {
+  position: fixed; top:0; left:0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+
+  &::before, &::after {
+    content: '';
+    display: block;
+    height: 60px; width: 100%;
+    position: absolute; left: 0;
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(rgb(180,180,180, 0.3), rgba(white, 0.0))
+  }
+
+
+  &::after {
+    bottom: 0;
+    background: linear-gradient(rgba(white, 0.0), rgb(180,180,180, 0.3));
+  }
+}
+
 .ready-btn {
   position: fixed;
   left: 50%;

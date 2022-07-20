@@ -15,11 +15,12 @@ $easing: cubic-bezier(.8, 0, .2, 1);
     &.phase-text__subject {
       text-transform: uppercase;
       font-weight: bold;
+      margin-bottom: 0
     }
 
     &.phase-text__description {
       animation-delay: #{$delay + .1}s;
-      margin-bottom: 6px
+      margin: 6px 0;
     }
     &.phase-text__note {
       animation-delay: #{$delay + .2}s;

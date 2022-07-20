@@ -51,7 +51,7 @@ export class Thought {
     this.h = this.size;
     const isHovered = this.isHovered(this.p.mouseX, this.p.mouseY) ;
     if (!inActive) {
-      if (isHovered !== undefined && !this.dragMode && !this.resizeMode) {
+      if (isHovered !== undefined && !this.dragMode && !this.resizeMode && !this.positionMode) {
         this.hoverEffect(this.isHovered(this.p.mouseX, this.p.mouseY)!);
       } else if (this.dragMode) { this.drag(this.p.mouseX, this.p.mouseY);
       } else if (this.resizeMode) { this.resize(this.p.mouseX, this.p.mouseY);

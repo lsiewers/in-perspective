@@ -53,7 +53,7 @@ export class ThoughtsComponent implements OnInit {
 
       inputEL = p.createInput().addClass('thought-input').addClass('invisible').attribute('placeholder', 'iets wat stess geeft...');
       inputEL.elt.addEventListener('change', () => {
-        this.addThought(p, inputEL, thoughts)
+        this.addThought(p, inputEL, thoughts);
         transformingT = thoughts.length - 1;
       });
     };
@@ -68,7 +68,7 @@ export class ThoughtsComponent implements OnInit {
         else if (thoughts[transformingT].resizeMode) {p.cursor('nesw-resize')}
       } else { p.cursor('default') }
 
-      thoughts.forEach(t => t.show(!(transformingT === undefined)));
+      thoughts.forEach(t => t.show(!(transformingT === undefined) && transformingT !== t.index));
 
       if (this.updatePhase(phase)) {
         phase = this.phase;
@@ -104,6 +104,9 @@ export class ThoughtsComponent implements OnInit {
             t.inst.resizeStartSize = t.inst.size;
             t.inst.resizeMode = true;
           }
+        } else if (thoughts[transformingT].positionMode) {
+          thoughts[transformingT].positionMode = false;
+          transformingT = undefined;
         }
         // }
       } else if (selectedT !== undefined) {
