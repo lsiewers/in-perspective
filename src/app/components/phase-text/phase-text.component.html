@@ -4,7 +4,7 @@
   <h1 class="phase-text__subject">{{subject}}</h1>
   <ul class="phase-text__tasks-list">
     <li *ngFor="let task of tasks">
-      <img class="icon" [src]="'/assets/icons/' + task.icon + '.png'">
+      <img class="icon" [src]="'assets/icons/' + task.icon + '.png'">
       <p class="description" [innerHTML]="task.description"></p>
       <p class="note" *ngIf="task.note" [innerHTML]="task.note"></p>
     </li>
