@@ -1,7 +1,8 @@
 export enum Phases {
-    INTRO,
-    SUBJECT,
-    NEGATIVE,
-    // PP,
-    SORT,
-  }
+  INTRO,
+  SUBJECT,
+  NEGATIVE,
+  POSITIVE,
+  RATIONALITY,
+  INPERSPECTIVE
+}

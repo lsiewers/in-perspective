@@ -7,88 +7,38 @@ input {
   outline: none;
 }
 
-
-.thought-input {
-  transform: translate(-50%, 0);
-  position: absolute;
-  bottom: 50px; left: 50%;
-  border-bottom: black solid 2px;
-  padding: 6px 0;
-  font-size: 18px;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  width: 240px;
-
-  &:not(.invisible) {
-    transition:
-      opacity $easing .4s,
-      transform $easing .4s;
-  }
-
-  &.invisible {
-    opacity: 0;
-    transform: translate(-50%, 5px);
-    pointer-events: none;
-  }
-
-  &.SORT {
-    transform: translate(-50%, 0) scale(.75);
-  }
-}
-
 //////
 .subject {
   z-index: -1;
+  position: fixed; top: 50%; left: 50%;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: solid 12px rgb(247, 247, 247);
+  transform: translate(-50%, -50%) scale(1);
 
-  &::before {
-    content: '';
-    display: block;
-    z-index: -2;
-  }
+  &:not(.INTRO) {
+    background-color: rgb(247, 247, 247);
+    transform: translate(-50%, -50%) scale(.75);
 
-  &, &::before {
-    position: fixed;
-    top:50%; left: 50%;
-    transform-origin: center center;
-    transform: translate(-50%, -50%) scale(1.5);
     transition: color, transform, background, opacity;
+    transform-origin: center center;
     transition-duration: 1.8s;
     transition-timing-function: $easing;
-
-    background-color: rgb(247, 247, 247);
-    height: 240px;
-    width: 240px;
-    border-radius: 50%;
   }
 
-  &.SUBJECT, &.SUBJECT::before {
-    transition:
-      color $easing .8s,
-      background $easing .8s,
-      opacity $easing .8s;
-    transform: translate(-50%, -50%) scale(1.5);
+  &.SUBJECT {
+    // transition-delay: .8s;
+    transform: translate(-50%, -50%) scale(1.8);
     opacity: 0;
   }
 
-  &.SUBJECT, &.SUBJECT::before { transform: translate(-50%, -50%) scale(1.5); }
+  &.SUBJECT, &.NEGATIVE, &.PP, &.SORT { opacity: 1; }
 
-  &.SUBJECT, &.NEGATIVE, &.PP, &.SORT {
-    &, &::before { opacity: 1; }
-  }
-
-  &.NEGATIVE {
-    &, &::before {
-      transform: translate(-50%, -50%) scale(1);
-      background-color: rgb(217, 217, 217);
-      color: rgb(0, 0, 0, 0.5);
-    }
-  }
-
-  &.SORT {
-    &, &::before {
-      transform: translate(-50%, -50%) scale(.8);
-    }
-  }
+  // &.NEGATIVE {
+  //   background-color: rgb(217, 217, 217);
+  //   color: rgb(0, 0, 0, 0.5);
+  // }
 
   input {
     text-align: center;
@@ -108,5 +58,71 @@ input {
   input:not(.editable) {
     pointer-events: none;
     color: rgba(0, 0, 0, .5);
+  }
+}
+
+.thought-input {
+  transform: translate(-50%, 0);
+  position: absolute;
+  bottom: 50px; left: 50%;
+  border-bottom: black solid 2px;
+  padding: 6px 0;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  width: 210px;
+
+  &:not(.invisible) {
+    transition:
+      opacity $easing .4s,
+      transform $easing .4s;
+  }
+
+  &.invisible {
+    opacity: 0;
+    transform: translate(-50%, 5px);
+    pointer-events: none;
+  }
+}
+
+.realism-slider {
+  position: absolute;
+  left: 50%; bottom: 40px;
+  height: 3px; width: 300px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  background: linear-gradient(to right, rgba(0,0,0,1), rgba(255,255,255,1));
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px; height: 15px;
+    background: white;
+    border: solid 4px black;
+    cursor: pointer;
+    border-radius:50%;
+    outline:none;
+  }
+
+  // &::-webkit-slider-runnable-track { width: 300px; }
+
+  &::before, &::after {
+    color: black;
+    display: block;
+    height: 14px;
+    position: absolute;
+  }
+
+  &::before {
+    content: 'IRRATIONELER';
+    transform: translate(-100%, -50%);
+    padding-right: 10px;
+  }
+
+  &::after {
+    content: 'REALISTISCHER';
+    right: 0;
+    transform: translate(100%, -50%);
+    padding-left: 10px;
   }
 }

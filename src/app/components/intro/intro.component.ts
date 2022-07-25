@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-intro',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routerService: RouterService) { }
 
   ngOnInit(): void {
   }
 
+  nextPhase() {
+    this.routerService.route(false);
+  }
 }

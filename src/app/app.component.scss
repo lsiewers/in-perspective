@@ -1,3 +1,5 @@
+$easing: cubic-bezier(0.83, 0, 0.17, 1);
+
 .gradient {
   position: fixed; top:0; left:0;
   width: 100vw; height: 100vh;
@@ -15,7 +17,6 @@
     background: linear-gradient(rgb(180,180,180, 0.3), rgba(white, 0.0))
   }
 
-
   &::after {
     bottom: 0;
     background: linear-gradient(rgba(white, 0.0), rgb(180,180,180, 0.3));
@@ -24,20 +25,8 @@
 
 .ready-btn {
   position: fixed;
-  left: 50%;
+  right: 20px; bottom: 20px;
   z-index: 1;
-
-  opacity: 0;
-  transform: translate(-50%, 10px);
-
-  appearance: none;
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  font-size: 16px;
-  font-style: italic;
 
   &::before {
     content: attr('note');
@@ -45,14 +34,26 @@
     color: rgb(217, 217, 217);
   }
 
+  &:not(.is--visible) {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+  }
+
   &.is--visible {
-    transform: translate(-50%, 0);
+    transform: translateY(0);
     opacity: 1;
     transition:
       opacity ease-out .4s,
       transform ease-out .4s;
   }
+}
 
-  &.SUBJECT { top: 75%; }
-  &.NEGATIVE { bottom: 20px; }
+.bottom-logo {
+  width: 60px;
+  position: fixed; bottom: 30px; left: 30px;
+  opacity: .2;
+  transition: opacity ease-out .4s;
+
+  .INTRO & { opacity: 0; }
 }

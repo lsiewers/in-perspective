@@ -1,6 +1,15 @@
-<div class="gradient"></div>
-<app-thoughts (showReadyBtn)="toggleReadyBtn($event)"></app-thoughts>
+<div class="{{getPhase()}}">
+  <div class="gradient"></div>
 
-<router-outlet></router-outlet>
+  <app-thoughts (showReadyBtn)="toggleReadyBtn($event)"></app-thoughts>
 
-<button class="ready-btn {{getPhase()}}" [attr.note]="note" [class.is--visible]="showReadyBtn" (click)="nextPhase()">NEXT</button>
+  <router-outlet></router-outlet>
+
+  <button class="ready-btn {{getPhase()}}" [attr.note]="note" [class.is--visible]="showReadyBtn" (click)="nextPhase()">VOLGENDE</button>
+
+  <img
+    class="bottom-logo"
+    src="../assets/images/logo.svg"
+  />
+
+</div>

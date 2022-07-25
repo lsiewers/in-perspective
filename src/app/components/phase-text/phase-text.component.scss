@@ -1,33 +1,97 @@
-$delay : 1.5;
 $easing: cubic-bezier(.8, 0, .2, 1);
+
+.open-btn {
+  display: block;
+  position: fixed; top: 30px; right: 30px;
+  height: 40px; width: 40px;
+  background-color: white;
+  border: solid 3px rgb(180, 180, 180);
+  border-radius: 50%;
+
+  color:rgb(180, 180, 180);
+  font-size: 1.1em;
+  font-weight: bold;
+
+  &.is--visible { cursor: pointer; }
+  &:not(.is--visible) { pointer-events: none; }
+}
 
 .phase-text {
   position: fixed;
-  padding: 30px;
+  padding: 40px;
   z-index: 1;
   font-family: sans-serif;
+  height: 100vh; width: 100vw;
+  background: linear-gradient(rgb(white, 1) 25%, rgba(white, 0.0));
+  transition: opacity $easing .4s;
 
-  p {
+  &.is--visible { opacity: 1; }
+  &:not(.is--visible) {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: block;
+    height: 30px; width: 30px;
+    border: solid 3px black;
+    border-radius: 50%;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+
+  &__subject, &__tasks-list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  &__subject {
     opacity: 0;
     transform: translateY(10px);
-    animation: fadeIn forwards .6s $easing #{$delay}s;
-
-    &.phase-text__subject {
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-bottom: 0
-    }
-
-    &.phase-text__description {
-      animation-delay: #{$delay + .1}s;
-      margin: 6px 0;
-    }
-    &.phase-text__note {
-      animation-delay: #{$delay + .2}s;
-      font-size: 12px;
-      color: rgb(150, 150, 150);
-    }
+    animation: fadeIn forwards .6s $easing .2s;
+    margin-top: 20px;
+    font-size: 1.8em;
   }
+
+  &__tasks-list {
+    list-style: none;
+    padding: 20px 0;
+
+    li {
+      text-align: left;
+      margin: 12px 0;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn forwards .6s $easing .2s;
+
+      @for $i from 1 to 10 {
+        &:nth-child(#{$i}) { animation-delay: 0.2s + $i * 0.1s; }
+      }
+    }
+
+    .icon {
+      max-width: 24px; max-height: 18px;
+      width: auto; height: auto;
+      margin-right: 6px;
+      display: inline;
+      margin-bottom: -2px;
+    }
+
+    .description {
+      display: inline-block;
+      margin: 0;
+      width: calc(100% - 30px);
+    }
+    .note {
+      font-size: 12px;
+      margin: 3px 0;
+
+      &, a { color: rgb(150, 150, 150) !important; }
+    }
+
+  }
+
 
   &.x--LEFT {left: 0;}
   &.x--CENTER {left: 50%; transform: translateX(-50%); text-align: center; }
@@ -38,6 +102,11 @@ $easing: cubic-bezier(.8, 0, .2, 1);
   &.y--BOTTOM {bottom: 0}
 
   &.y--CENTER.x--CENTER { transform: translate(-50%, -50%); }
+
+  .ready-btn {
+    opacity: 0;
+    animation: fadeIn forwards .6s $easing 3s;
+  }
 }
 
 @keyframes fadeIn {

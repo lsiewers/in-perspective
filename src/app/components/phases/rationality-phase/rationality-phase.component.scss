@@ -1,0 +1,15 @@
+.axis {
+  position: fixed; top: 50%;
+  width: 100vw;
+  transform: translateY(-50%);
+  display: flex; justify-content: space-between;
+  z-index: -1;
+
+  span {
+    display: inline-block;
+    padding: 0 40px;
+    background-color: white;
+    // font-style: italic;
+    color: rgb(180, 180, 180);
+  }
+}

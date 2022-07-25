@@ -11,14 +11,14 @@ export class Subject {
     this.p = p5;
     this.div = div;
     this.input = input;
-
-
-    this.input.elt.focus();
   }
 
   setClasses(phase: Phases) {
-    if (phase === Phases.SUBJECT) { this.input.hasClass('editable') ? null : this.input.addClass('editable')}
-    else { this.input.hasClass('editable') ? this.input.toggleClass('editable') : null }
+    if (phase === Phases.SUBJECT) {
+      this.input.hasClass('editable') ? null : this.input.addClass('editable')
+      this.input.elt.focus();
+    }
+    else { this.input.hasClass('editable') ? this.input.removeClass('editable') : null }
 
     const phaseT = getPhaseKeyText(phase)!;
     this.div.elt.classList = ['subject'];

@@ -1,3 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '../src/assets/scss/sketch';
+
+* {
+  font-family: mundial,sans-serif;
+  box-sizing: border-box;
+}
+
+.ready-btn {
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 20px;
+  appearance: none;
+  background: transparent;
+  border: none;
+}
+
+h1, h2, h3, h4, strong {
+  font-weight: bold;
+}

@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subject-phase.component.scss']
 })
 export class SubjectPhaseComponent implements OnInit {
+  info = [
+    {
+      icon: 'text',
+      description: '<strong>Beschrijf</strong> in 1 a 2 woorden waar je recentelijk stress van ervaart',
+    }
+  ]
 
   constructor() { }
 
