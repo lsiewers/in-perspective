@@ -37,7 +37,7 @@ export class ThoughtsComponent implements OnInit {
     let subject: Subject;
     let thoughts: Thought[] = [];
 
-    const showPlaceholders = true;
+    const showPlaceholders = false;
 
     // states
     let phase!: Phases;

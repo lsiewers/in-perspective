@@ -14,7 +14,7 @@ import { ModalService } from './services/modal.service';
 export class AppComponent {
   @Input('note') note = '';
   title = 'ective';
-  currentPhase: Phases = Phases.RATIONALITY;
+  currentPhase: Phases = Phases.INTRO;
   showReadyBtn = false;
 
   constructor(
