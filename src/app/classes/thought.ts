@@ -1,7 +1,7 @@
 
 import * as p5 from 'p5';
-import { Phases } from '../enums/phases';
-import { ResizeHandlers } from '../enums/resize-handlers';
+import { Phases } from '../models/phases';
+import { ResizeHandlers } from '../models/resize-handlers';
 
 export class Thought {
   p: p5;
@@ -171,6 +171,16 @@ export class Thought {
   }
 
   checkIfRealistic() { return this.x > this.p.windowWidth/2; }
+
+  changeSize(val: number) {
+    if (this.type === 'negative' && !this.isRealistic) {
+      this.size = this.storedSize - val/6 > 1 ? this.storedSize - val/6 : 1;
+      this.transparency = val > 0 ? 255 - val*2 : 255;
+    } else if (this.type === 'positive') {
+      this.size = this.storedSize + val/6 > 1 ? this.storedSize + val/6 : 1 ;
+      this.transparency = val < 0 ? 255 + val*2 : 255;
+    }
+  }
 
   // on p5 event
   position (mx: number, my: number) {

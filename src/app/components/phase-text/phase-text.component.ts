@@ -1,22 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, NgZone, OnChanges, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
+import { Info } from '../../models/info';
+import { DataService } from '../../services/data.service';
+import { Phases } from 'src/app/models/phases';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-phase-text',
   templateUrl: './phase-text.component.html',
   styleUrls: ['./phase-text.component.scss']
 })
-export class PhaseTextComponent implements OnInit {
-  @Input('subject') subject: string = '';
-  @Input('tasks') tasks: {icon: string; description: string; note?: string}[] = [];
-  @Input('open') show = true;
+export class PhaseTextComponent implements OnInit, OnChanges {
+  info!: Promise<Info>;
+  show = true;
+  currentPhase!: Phases;
 
-  @Input('xPos') xPos: 'LEFT' | 'CENTER' | 'RIGHT' = 'CENTER';
-  @Input('yPos') yPos: 'TOP' | 'CENTER' | 'BOTTOM' = 'TOP';
+  constructor(
+    private modalService: ModalService,
+    private dataService: DataService,
+    private route: ActivatedRoute,
+  ) {
 
-  constructor(private modalService: ModalService) {   }
+    this.modalService.modalEmitted$.subscribe(change => this.show = change)
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.route.url.subscribe(r => {
+      this.currentPhase = Number(r[0].path) as Phases;
+      this.open();
+      this.ngOnChanges();
+    });
+  }
+
+  ngOnChanges(): void {
+    this.info = this.dataService.getInfo(this.currentPhase).then(info => {
+      console.log(this.show, info, this.currentPhase);
+      return info as Info
+    });
+
   }
 
   close() {

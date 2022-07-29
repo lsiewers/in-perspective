@@ -1,29 +1,14 @@
 $easing: cubic-bezier(.8, 0, .2, 1);
 
-.open-btn {
-  display: block;
-  position: fixed; top: 30px; right: 30px;
-  height: 40px; width: 40px;
-  background-color: white;
-  border: solid 3px rgb(180, 180, 180);
-  border-radius: 50%;
-
-  color:rgb(180, 180, 180);
-  font-size: 1.1em;
-  font-weight: bold;
-
-  &.is--visible { cursor: pointer; }
-  &:not(.is--visible) { pointer-events: none; }
-}
-
 .phase-text {
   position: fixed;
   padding: 40px;
-  z-index: 1;
+  z-index: 9;
   font-family: sans-serif;
   height: 100vh; width: 100vw;
-  background: linear-gradient(rgb(white, 1) 25%, rgba(white, 0.0));
-  transition: opacity $easing .4s;
+  // background: linear-gradient(rgb(white, 1) 25%, rgba(white, 0.0))
+  background-color: white;
+  transition: opacity $easing .4s .2s;
 
   &.is--visible { opacity: 1; }
   &:not(.is--visible) {
@@ -39,9 +24,10 @@ $easing: cubic-bezier(.8, 0, .2, 1);
     line-height: 20px;
     font-weight: bold;
     margin: 0 auto;
+    text-align: center;
   }
 
-  &__subject, &__tasks-list {
+  &__subject, &__tasks-list, &__description {
     max-width: 720px;
     margin: 0 auto;
   }
@@ -52,15 +38,24 @@ $easing: cubic-bezier(.8, 0, .2, 1);
     animation: fadeIn forwards .6s $easing .2s;
     margin-top: 20px;
     font-size: 1.8em;
+    text-align: center;
+  }
+
+  &__description {
+    margin-top: 20px;
+
+    & > a { color: black !important}
   }
 
   &__tasks-list {
     list-style: none;
-    padding: 20px 0;
+    margin: 30px auto;
+    padding: 18px 32px;
+    border: solid 3px black;
 
     li {
       text-align: left;
-      margin: 12px 0;
+      margin: 18px 0;
       opacity: 0;
       transform: translateY(10px);
       animation: fadeIn forwards .6s $easing .2s;
@@ -72,7 +67,8 @@ $easing: cubic-bezier(.8, 0, .2, 1);
 
     .icon {
       max-width: 24px; max-height: 18px;
-      width: auto; height: auto;
+      width: 24px; height: auto;
+      object-fit:scale-down;
       margin-right: 6px;
       display: inline;
       margin-bottom: -2px;
@@ -92,20 +88,11 @@ $easing: cubic-bezier(.8, 0, .2, 1);
 
   }
 
-
-  &.x--LEFT {left: 0;}
-  &.x--CENTER {left: 50%; transform: translateX(-50%); text-align: center; }
-  &.x--RIGHT {right: 0}
-
-  &.y--TOP {top: 0}
-  &.y--CENTER { top: 50%; transform: translateY(-50%);}
-  &.y--BOTTOM {bottom: 0}
-
-  &.y--CENTER.x--CENTER { transform: translate(-50%, -50%); }
-
   .ready-btn {
     opacity: 0;
-    animation: fadeIn forwards .6s $easing 3s;
+    margin: 10px auto;
+    display: block;
+    animation: fadeIn forwards .6s $easing 1s;
   }
 }
 

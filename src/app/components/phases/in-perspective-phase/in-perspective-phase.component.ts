@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { getPhaseValueByKey } from 'src/app/functions/convertEnums';
+import { Phases } from 'src/app/models/phases';
 
 @Component({
   selector: 'app-in-perspective-phase',
@@ -6,15 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./in-perspective-phase.component.scss']
 })
 export class InPerspectivePhaseComponent implements OnInit {
-  info = [
-    {
-      icon: 'position',
-      description: '<strong>Bekijk</strong> wat er gebeurt wanneer je irrationeel of realistisch bent',
-      note: 'Dit is een impressie wat negatieve gedachtes en stress met ons kunnen doen. <br> Als we daar goed mee kunnen omgaan, zien we alles realistischer.'
-    }
-  ]
-
-  constructor() { }
+  phase: Phases = getPhaseValueByKey('NEGATIVE');
 
   ngOnInit(): void {
   }

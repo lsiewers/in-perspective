@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { getPhaseKeyText } from './functions/convertEnums';
-import { Phases } from './enums/phases';
 import { RouterService } from './services/router.service';
 import { ModalService } from './services/modal.service';
+import { Phases } from './models/phases';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,6 @@ import { ModalService } from './services/modal.service';
 })
 
 export class AppComponent {
-  @Input('note') note = '';
   title = 'ective';
   currentPhase: Phases = Phases.INTRO;
   showReadyBtn = false;
@@ -22,13 +21,14 @@ export class AppComponent {
     private routerService: RouterService,
     private modalService: ModalService
   ) {
-    this.routerService.routeEmitted$.subscribe(route => route ? this.toPhase(route) : this.nextPhase());
+    this.routerService.routeEmitted$.subscribe(route => { route ? this.toPhase(route) : this.nextPhase() });
+
     this.router.navigate([this.currentPhase.toString()]);
   }
 
-  toPhase(phase: Phases) {
-    this.currentPhase = phase;
-    this.router.navigate([phase]);
+  toPhase(phase: string) {
+    this.currentPhase = Number(phase) as Phases;
+    this.router.navigate([this.currentPhase]);
     this.modalService.open(true);
   }
 
@@ -39,6 +39,7 @@ export class AppComponent {
     this.showReadyBtn = false;
   }
 
+  getPhaseNumber(phase: string) { return Object.values(Phases).indexOf(phase) }
   getPhase(): string { return getPhaseKeyText(this.currentPhase)!; }
   isThoughtPhase(): boolean { return !!(this.currentPhase === Phases.NEGATIVE); }
   toggleReadyBtn(show: any) { this.showReadyBtn = show; }

@@ -8,29 +8,25 @@
 
 
   &__app-logo {
-    width: 72px;
+    width: 90px;
+  }
+
+  &__text {
+    width: 480px;
+    font-size: 1.5em;
   }
 
   &__phases-list {
-    position: relative;
-    top: 50%;
-    transform: translateY(calc(-50% - 100px));
+    margin-top: 60px;
     list-style-position: inside;
     list-style: decimal;
-    width: 420px;
-
-    h2 {
-      margin-left: -36px;
-    }
+    width: 480px;
 
     li {
-      font-size: 1.5em;
+      font-size: 1.2em;
       line-height: 1.8;
     }
   }
 
-  &__begin-btn {
-    position: absolute;
-    bottom: 30px
-  }
+  &__begin-btn { margin-top: 60px; }
 }

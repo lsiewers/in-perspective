@@ -15,6 +15,7 @@ import { SubjectPhaseComponent } from './components/phases/subject-phase/subject
 
 import { RouterService } from './../app/services/router.service';
 import { ModalService } from './../app/services/modal.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,13 @@ import { ModalService } from './../app/services/modal.service';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     RouterService,
     ModalService,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

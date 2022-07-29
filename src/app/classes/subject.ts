@@ -1,6 +1,7 @@
 import * as p5 from 'p5';
-import { Phases } from '../enums/phases';
+
 import { getPhaseKeyText } from '../functions/convertEnums';
+import { Phases } from '../models/phases';
 
 export class Subject {
   p: p5;

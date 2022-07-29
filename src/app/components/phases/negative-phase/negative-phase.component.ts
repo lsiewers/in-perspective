@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { getPhaseValueByKey } from 'src/app/functions/convertEnums';
+import { Phases } from 'src/app/models/phases';
 
 @Component({
   selector: 'app-negative-phase',
@@ -6,25 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./negative-phase.component.scss']
 })
 export class NegativePhaseComponent implements OnInit {
-  info = [
-    {
-      icon: 'text',
-      description: '<strong>Beschrijf</strong> zoveel mogelijk invloeden die je stress geven bij je onderwerp',
-      note: 'Bepaalde gedachtes, gebeurtenissen, zorgen etc.'
-    },
-    {
-      icon: 'position',
-      description: '<strong>Positioneer</strong> bij elkaar wat bij elkaar hoort',
-      note: 'Dit kan helpen meer invloeden te verzinnen.'
-    },
-    {
-      icon: 'resize',
-      description: '<strong>Schaal</strong> de invloeden op basis van <i>impact</i>',
-      note: ''
-    }
-  ]
-
-  constructor() { }
+  phase: Phases = getPhaseValueByKey('NEGATIVE');
 
   ngOnInit(): void {
   }

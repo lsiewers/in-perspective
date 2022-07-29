@@ -1,5 +1,5 @@
 .axis {
-  position: fixed; top: 50%;
+  position: fixed; top: calc(50% - 60px);
   width: 100vw;
   transform: translateY(-50%);
   display: flex; justify-content: space-between;

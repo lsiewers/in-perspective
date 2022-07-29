@@ -1,14 +1,15 @@
-<button class="open-btn" [class.is--visible]="!show" (click)="open()">?</button>
-<div class="phase-text x--{{xPos}} y--{{yPos}}" [class.is--visible]="show">
+<!-- <button class="open-btn" [class.is--visible]="show" (click)="open()">?</button> -->
+<div class="phase-text" [class.is--visible]="show && (info | async)">
   <span class="phase-text__icon">i</span>
-  <h1 class="phase-text__subject">{{subject}}</h1>
+  <h1 class="phase-text__subject">{{(info | async)?.title}}</h1>
   <ul class="phase-text__tasks-list">
-    <li *ngFor="let task of tasks">
+    <li *ngFor="let task of (info | async)?.tasks">
       <img class="icon" [src]="'assets/icons/' + task.icon + '.png'">
-      <p class="description" [innerHTML]="task.description"></p>
+      <p class="description" [innerHTML]="'<strong>'+task.task + '</strong> ' + task.description"></p>
       <p class="note" *ngIf="task.note" [innerHTML]="task.note"></p>
     </li>
   </ul>
+  <p class="phase-text__description" [innerHTML]="(info | async)?.description"></p>
 
   <button class="ready-btn" (click)="close()">Ik snap het</button>
 </div>

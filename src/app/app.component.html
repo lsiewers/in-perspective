@@ -1,11 +1,19 @@
 <div class="{{getPhase()}}">
   <div class="gradient"></div>
 
-  <app-thoughts (showReadyBtn)="toggleReadyBtn($event)"></app-thoughts>
+  <app-thoughts (changePhase)="toPhase($event)" (showReadyBtn)="toggleReadyBtn($event)"></app-thoughts>
 
   <router-outlet></router-outlet>
 
-  <button class="ready-btn {{getPhase()}}" [attr.note]="note" [class.is--visible]="showReadyBtn" (click)="nextPhase()">VOLGENDE</button>
+  <button
+    class="ready-btn {{getPhase()}}"
+    *ngIf="getPhase() !== 'NEGATIVE'"
+    [class.is--visible]="showReadyBtn"
+    (click)="nextPhase()"
+  >
+    KLAAR
+  </button>
+  <span *ngIf="getPhase() === 'NEGATIVE'" class="ready-note">Klik op + om positieve kanten toe te voegen</span>
 
   <img
     class="bottom-logo"

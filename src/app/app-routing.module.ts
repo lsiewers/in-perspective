@@ -7,8 +7,9 @@ import { NegativePhaseComponent } from './components/phases/negative-phase/negat
 import { PositivePhaseComponent } from './components/phases/positive-phase/positive-phase.component';
 import { RationalityPhaseComponent } from './components/phases/rationality-phase/rationality-phase.component';
 import { SubjectPhaseComponent } from './components/phases/subject-phase/subject-phase.component';
+import { Phases } from './models/phases';
 
-import { Phases } from './enums/phases';
+
 
 const routes: Routes = [
   {

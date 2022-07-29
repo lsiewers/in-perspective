@@ -1,3 +1,23 @@
 <div class="thoughts" id="thoughts">
+  <div class="thoughts__input" [class.invisible]="!ready || !isInputPhase()" id="thoughts__input">
+    <!-- input element for thoughts (added in p5 sketch) -->
+    <div class="thoughts__input__type-switch">
+      <button class="negative" [class.active]="getCurrentPhase() === 'NEGATIVE'" (click)="changePhase('NEGATIVE')">-</button>
+      <button class="positive" [class.active]="getCurrentPhase() === 'POSITIVE'" (click)="changePhase('POSITIVE')">+</button>
+    </div>
+    <div class="thoughts__input__info-btn" [class.is--visible]="ready"> <button (click)="openModal()">?</button> </div>
 
+    <ng-container *ngIf="isInputPhase()">
+      <ul class="thoughts__input__description">
+        <li> <img src="assets/icons/text.png"> <p>Beschrijf</p> </li>
+        <li> <img src="assets/icons/position.png"> <p>Positioneer</p> </li>
+        <li> <img src="assets/icons/resize.png"> <p>Schaal</p> </li>
+      </ul>
+    </ng-container>
+    <ng-container *ngIf="isPerspectivePhase()">
+      <div class="thoughts__input__description">
+        <p>Dit is een impressie wat negatieve gedachten en stress met ons kan doen.</p>
+      </div>
+    </ng-container>
+  </div>
 </div>
