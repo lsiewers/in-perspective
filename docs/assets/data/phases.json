@@ -1,0 +1,78 @@
+{
+ "NEGATIVE":  {
+    "title": "Negatieve invloeden",
+    "icon": "minus",
+    "description": "Voorbeelden: welke gebeurtenissen zijn/waren stressvol? Waar denk ik veel over na? Wat maakt me onzeker?",
+    "tasks": [
+      {
+        "icon": "text",
+        "task": "Beschrijf",
+        "description": "zoveel mogelijk invloeden die je stress geven bij je onderwerp",
+        "note": ""
+      },
+      {
+        "icon": "position",
+        "task": "Positioneer",
+        "description": "bij elkaar wat bij elkaar hoort",
+        "note": "Dit kan helpen meer invloeden te verzinnen."
+      },
+      {
+        "icon": "resize",
+        "task": "Schaal",
+        "description": "de invloeden op basis van <i>impact</i>",
+        "note": ""
+      }
+    ]
+  },
+  "POSITIVE":  {
+     "title": "Positieve kant",
+     "icon": "plus",
+     "description": "Voorbeelden: wat kan ik goed?  Wat zijn mooie kansen?  Wat gaat er al wel goed? Wat zijn overige voordelen?",
+     "tasks": [
+       {
+         "icon": "text",
+         "task": "Beschrijf",
+         "description": "zoveel mogelijk positieve kanten bij je onderwerp",
+         "note": ""
+       },
+       {
+         "icon": "position",
+         "task": "Positioneer",
+         "description": "bij elkaar wat bij elkaar hoort",
+         "note": ""
+       },
+       {
+         "icon": "resize",
+         "task": "Schaal",
+         "description": "de invloeden op basis van <i>impact</i>",
+         "note": ""
+       }
+     ]
+   },
+  "RATIONALITY":  {
+    "title": "Irrationeel / realistisch",
+    "icon": "",
+    "description": "Irrationeel betekent doorgaans een (te) negatieve gedachte, ook wel bekend als een <a href='https://static1.squarespace.com/static/5cb61b1e29f2cc34d16e2bd6/t/6022ebb01ea23571f0e84bbe/1612901311272/cognitive-distortions-examples-infographic.pdf' target='_blank'>cognitive distortion</a>. <br><br> Na deze stap wordt alles weer op de huidige positie teruggeplaatst",
+    "tasks": [
+      {
+        "icon": "position",
+        "task": "Positioneer",
+        "description": "de negatieve invloeden op irrationeel of realistisch.",
+        "note": "Dit kan helpen meer invloeden te verzinnen."
+      }
+    ]
+  },
+  "INPERSPECTIVE":  {
+    "title": "In perspectief",
+    "icon": "",
+    "description": "Door irrationele, negatieve gedachten krijgen we meer stress, waardoor denken we minder positief denken en worden de irrationele gedachten groter. <br><br> Psychologische stress is ongezond en door je gedachtes in perspectief te zien, kan je er realistischer naar kijken en er wat aan doen. Hoe meer gestresst we zijn, hoe negatiever we denken en dat geeft weer meer stress.",
+    "tasks": [
+      {
+        "icon": "position",
+        "task": "Bekijk",
+        "description": "wat er gebeurt wanneer je irrationeler (en meer gestresst) en wanneer je realistischer bent",
+        "note": "Dit is een impressie wat negatieve gedachten en stress met ons kan doen."
+      }
+    ]
+  }
+}
