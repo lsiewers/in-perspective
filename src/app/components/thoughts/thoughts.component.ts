@@ -133,9 +133,9 @@ export class ThoughtsComponent implements OnInit {
             this.addThought(p, inputEL, thoughts);
             transformingT = thoughts.length - 1;
           });
-        } else { inputEL.attribute('placeholder', 'iets wat stress geeft...'); }
+        } else { inputEL.attribute('placeholder', 'Iets wat stress geeft...'); }
       } else if (this.phase === Phases.POSITIVE) {
-        inputEL.attribute('placeholder', 'positieve kanten...');
+        inputEL.attribute('placeholder', 'Vaardigheden, mogelijkheden, voordelen...');
       } else if (this.phase === Phases.RATIONALITY) {
         thoughts.forEach(t => {
           if (t.type === 'negative') {
