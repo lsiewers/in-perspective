@@ -29,8 +29,8 @@ input {
     width: 90%;
     font-size: .3em;
     text-align: center;
-    transform: translateY(-50%);
-    position: absolute; top: calc(50% + 40px);
+    transform: translate(-50%, -50%);
+    position: absolute; top: calc(50% + 40px); left: 50%;
     opacity: 0;
     transition: opacity .4s $easing .2s;
   }
@@ -46,6 +46,8 @@ input {
     transition-duration: 1.8s;
     transition-timing-function: $easing;
   }
+
+  &:not(.SUBJECT) { pointer-events: none; }
 
   &.SUBJECT {
     // transition-delay: .8s;
@@ -90,18 +92,25 @@ input {
   transform: translate(-50%, 0);
   position: absolute;
   bottom: 12px; left: 50%;
+  width: 100%;
   display: flex; flex-wrap: wrap; justify-content: center;
 
   &:not(.invisible) {
-    transition:
-      opacity $easing .4s,
-      transform $easing .4s;
+    .thoughts__input__el,
+    .thoughts__input__type-switch {
+      transition:
+        opacity $easing .4s,
+        transform $easing .4s;
+    }
   }
 
   &.invisible {
-    opacity: 0;
-    transform: translate(-50%, 5px);
-    pointer-events: none;
+    .thoughts__input__el,
+    .thoughts__input__type-switch {
+      opacity: 0;
+      transform: translate(-50%, 5px);
+      pointer-events: none;
+    }
   }
 
   &__el {
@@ -160,8 +169,14 @@ input {
       // font-weight: bold;
     }
 
-    &.is--visible button { cursor: pointer; }
-    &:not(.is--visible) button { pointer-events: none; }
+    &.is--visible button {
+      cursor: pointer;
+      opacity: 1;
+    }
+    &:not(.is--visible) button {
+      pointer-events: none;
+      opacity: 0;
+    }
   }
 
   &__description {
@@ -190,48 +205,43 @@ input {
       color: rgb(140, 140, 140);
     }
   }
-}
 
-.realism-slider {
-  position: absolute;
-  left: 50%; bottom: 80px;
-  height: 3px; width: 360px;
-  transform: translateX(-50%);
-  cursor: pointer;
-  background: linear-gradient(to right, rgba(0,0,0,1), rgba(255,255,255,1));
+  &__slider {
+    order: 1;
+    display: flex; align-items: center;
 
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px; height: 15px;
-    background: white;
-    border: solid 4px black;
-    cursor: pointer;
-    border-radius:50%;
-    outline:none;
-  }
+    span {
+      display: inline-block;
+      font-size: .7em;
+    }
+    .irrational { order: 0; }
+    .realistic { order: 2; }
 
-  // &::-webkit-slider-runnable-track { width: 300px; }
+    input {
+      order: 1;
+      margin: 0 12px;
+      height: 3px; width: 360px;
+      cursor: pointer;
+      background: linear-gradient(to right, rgba(0,0,0,1), rgba(255,255,255,1));
 
-  &::before, &::after {
-    color: black;
-    display: block;
-    height: 14px;
-    position: absolute;
-  }
-
-  &::before {
-    content: 'IRRATIONELER';
-    transform: translate(-100%, -50%);
-    padding-right: 10px;
-  }
-
-  &::after {
-    content: 'REALISTISCHER';
-    right: 0;
-    transform: translate(100%, -50%);
-    padding-left: 10px;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px; height: 15px;
+        background: white;
+        border: solid 4px black;
+        cursor: pointer;
+        border-radius:50%;
+        outline:none;
+      }
+    }
   }
 }
+// .thoughts__slider__description {
+//   transform: translate(-50%, 0);
+//   position: absolute;
+//   bottom: 18px; left: 50%;
+// }
+
 
 

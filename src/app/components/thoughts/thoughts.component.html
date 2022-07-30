@@ -5,19 +5,24 @@
       <button class="negative" [class.active]="getCurrentPhase() === 'NEGATIVE'" (click)="changePhase('NEGATIVE')">-</button>
       <button class="positive" [class.active]="getCurrentPhase() === 'POSITIVE'" (click)="changePhase('POSITIVE')">+</button>
     </div>
-    <div class="thoughts__input__info-btn" [class.is--visible]="ready"> <button (click)="openModal()">?</button> </div>
+    <div class="thoughts__input__info-btn" [class.is--visible]="isPerspectivePhase() || (isInputPhase() && ready)"> <button (click)="openModal()">?</button> </div>
 
-    <ng-container *ngIf="isInputPhase()">
+    <div class="thoughts__input__slider" id="input-slider"  *ngIf="isPerspectivePhase()">
+      <span class="irrational">IRRATIONELER</span>
+      <span class="realistic">REALISTISCHER</span>
+    </div>
+
+    <ng-container *ngIf="ready && isInputPhase()">
       <ul class="thoughts__input__description">
         <li> <img src="assets/icons/text.png"> <p>Beschrijf</p> </li>
         <li> <img src="assets/icons/position.png"> <p>Positioneer</p> </li>
         <li> <img src="assets/icons/resize.png"> <p>Schaal</p> </li>
       </ul>
     </ng-container>
+    <ng-container *ngIf="isPerspectivePhase()">
+      <div class="thoughts__input__description thoughts__slider__description">
+        <p>Dit is een impressie wat negatieve gedachten en stress met ons kan doen.</p>
+      </div>
+    </ng-container>
   </div>
-  <ng-container *ngIf="isPerspectivePhase()">
-    <div class="thoughts__input__description thoughts__slider__description">
-      <p>Dit is een impressie wat negatieve gedachten en stress met ons kan doen.</p>
-    </div>
-  </ng-container>
 </div>

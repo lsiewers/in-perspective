@@ -7,13 +7,12 @@
 
   <button
     class="ready-btn {{getPhase()}}"
-    *ngIf="getPhase() !== 'NEGATIVE'"
     [class.is--visible]="showReadyBtn"
     (click)="nextPhase()"
   >
-    KLAAR
+    VOLGENDE
   </button>
-  <span *ngIf="getPhase() === 'NEGATIVE'" class="ready-note">Klik op + om positieve kanten toe te voegen</span>
+  <span *ngIf="" class="ready-note">Klik op + om positieve kanten toe te voegen</span>
 
   <img
     class="bottom-logo"

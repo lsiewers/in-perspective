@@ -177,7 +177,7 @@ export class Thought {
       this.size = this.storedSize - val/6 > 1 ? this.storedSize - val/6 : 1;
       this.transparency = val > 0 ? 255 - val*2 : 255;
     } else if (this.type === 'positive') {
-      this.size = this.storedSize + val/6 > 1 ? this.storedSize + val/6 : 1 ;
+      this.size = this.storedSize + val/6 > 1 ? this.storedSize + val/6 : 1;
       this.transparency = val < 0 ? 255 + val*2 : 255;
     }
   }

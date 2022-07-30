@@ -1,19 +1,17 @@
 import * as p5 from 'p5';
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Thought } from '../../classes/thought';
 import { Phases } from '../../models/phases';
 import { Subject } from '../../classes/subject';
 import { getPhaseKeyText } from '../../functions/convertEnums';
 import { Router, NavigationEnd, Event } from '@angular/router';
-import { ResizeHandlers } from '../../models/resize-handlers'
 import { ModalService } from '../../services/modal.service';
 import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-thoughts',
-  templateUrl: './thoughts.component.html',
-  styleUrls: ['./thoughts.component.scss']
+  templateUrl: './thoughts.component.html'
 })
 
 export class ThoughtsComponent implements OnInit {
@@ -85,13 +83,18 @@ export class ThoughtsComponent implements OnInit {
       /// reset default cursor
       if (transformingT === undefined) { p.cursor('default') }
 
-      // show axis on rationality phase
       if (this.phase === Phases.RATIONALITY) {
+        // show axis on rationality phase
         p.stroke(217, 217, 217);
         p.strokeWeight(2);
         p.line(20, p.windowHeight / 2 + 2 - 60, p.windowWidth - 20, p.windowHeight / 2 + 2 - 60);
       } else if (this.phase === Phases.INPERSPECTIVE) {
-        if(sliderEL !== undefined){ thoughts.forEach(t => t.changeSize(sliderEL.value() as number))}
+        // rationality slider
+        const val = sliderEL?.value() as number;
+        if(sliderEL !== undefined){ thoughts.forEach(t => t.changeSize(val))}
+        val > 0 ?
+            p.select('.irrational')?.style('opacity', (1 - val/(255/2)).toString()) :
+            p.select('.realistic')?.style('opacity', (1 + val/(255/2)).toString());
       }
 
       // display thoughts
@@ -121,9 +124,7 @@ export class ThoughtsComponent implements OnInit {
       if (this.phase !== Phases.SUBJECT) { subject.setClasses(phase); }
       if (this.phase !== Phases.NEGATIVE && this.phase !== Phases.POSITIVE) {
         subject.setClasses(phase);
-        if(inputEL !== undefined && inputEL.hasClass('invisible')) {
-          inputEL.addClass('invisible');
-        }
+        if(inputEL !== undefined && inputEL.hasClass('invisible')) { inputEL.addClass('invisible'); }
       }
 
       if (this.phase === Phases.NEGATIVE) {
@@ -154,7 +155,7 @@ export class ThoughtsComponent implements OnInit {
           t.storedSize = t.size;
         });
         // define thoughts irrational/realistic
-        sliderEL = p.createSlider(-100, 100, 0).class('realism-slider');
+        sliderEL = p.createSlider(-100, 100, 0).parent('#input-slider');
       }
     }
 
@@ -259,23 +260,11 @@ export class ThoughtsComponent implements OnInit {
 
   addThought(p: p5, input: p5.Element, thoughts: Thought[]) {
     const t = new Thought(p, this.phase, thoughts.length, input.value() as string, 18, p.windowWidth / 2, p.windowHeight - 80);
-    // show 'next' button if minimum amount is reached
-    if (this.phase === Phases.NEGATIVE) { thoughts.length >= 1 ? this.toggleReadyBtn(true) : this.toggleReadyBtn(false); }
-    else if (this.phase === Phases.POSITIVE) {
-      // set thought type to positive
-      t.type = 'positive';
-      // show 'next' button if minimum amount is reached
-    }
 
+    if (this.phase === Phases.POSITIVE) { t.type = 'positive'; }
     thoughts.push(t);
     input.value('');
     input.elt.blur();
-
-    let nAmount = 0;
-    let pAmount = 0;
-    thoughts.forEach(t => t.type==='negative' ? nAmount++ : pAmount++);
-    if (nAmount > 2 && pAmount > 2) { this.toggleReadyBtn(true); }
-    else { this.toggleReadyBtn(false); }
   }
 
   openModal() { this.modalService.open(true); }

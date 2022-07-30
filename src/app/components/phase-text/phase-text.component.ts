@@ -33,11 +33,7 @@ export class PhaseTextComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.info = this.dataService.getInfo(this.currentPhase).then(info => {
-      console.log(this.show, info, this.currentPhase);
-      return info as Info
-    });
-
+    this.info = this.dataService.getInfo(this.currentPhase).then(info => info as Info);
   }
 
   close() {
