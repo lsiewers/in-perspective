@@ -116,6 +116,14 @@ export class ThoughtsComponent implements OnInit {
     }
 
     // custom functions
+    const createThoughtInput = () => {
+      inputEL = p.createInput().parent('#thoughts__input').addClass('thoughts__input__el').attribute('placeholder', 'iets wat stress geeft...').attribute('maxlength', '36');
+      inputEL.elt.addEventListener('change', () => {
+        this.addThought(p, inputEL, thoughts);
+        transformingT = thoughts.length - 1;
+      });
+    }
+
     const onPhaseChange = () => {
       phase = this.phase;
       ready = false;
@@ -128,15 +136,9 @@ export class ThoughtsComponent implements OnInit {
       }
 
       if (this.phase === Phases.NEGATIVE) {
-        if(inputEL === undefined) {
-          inputEL = p.createInput().parent('#thoughts__input').addClass('thoughts__input__el').attribute('placeholder', 'iets wat stress geeft...').attribute('maxlength', '36');
-          inputEL.elt.addEventListener('change', () => {
-            this.addThought(p, inputEL, thoughts);
-            transformingT = thoughts.length - 1;
-          });
-        } else { inputEL.attribute('placeholder', 'Iets wat stress geeft...'); }
+        inputEL === undefined ? createThoughtInput() : inputEL.attribute('placeholder', 'Iets wat stress geeft...');
       } else if (this.phase === Phases.POSITIVE) {
-        inputEL.attribute('placeholder', 'Vaardigheden, mogelijkheden, voordelen...');
+        inputEL === undefined ? createThoughtInput() : inputEL.attribute('placeholder', 'Vaardigheden, mogelijkheden, voordelen...');
       } else if (this.phase === Phases.RATIONALITY) {
         thoughts.forEach(t => {
           if (t.type === 'negative') {
@@ -145,6 +147,8 @@ export class ThoughtsComponent implements OnInit {
           }
         });
       } else if (this.phase === Phases.INPERSPECTIVE) {
+        inputEL.remove();
+
         thoughts.forEach(t => {
           if (t.type === 'negative') {
             t.isRealistic = t.checkIfRealistic();
