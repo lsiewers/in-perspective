@@ -58,14 +58,14 @@
         "icon": "position",
         "task": "Positioneer",
         "description": "de negatieve invloeden op irrationeel of realistisch.",
-        "note": "Dit kan helpen meer invloeden te verzinnen."
+        "note": ""
       }
     ]
   },
   "INPERSPECTIVE":  {
     "title": "In perspectief",
     "icon": "",
-    "description": "Door irrationele, negatieve gedachten krijgen we meer stress, waardoor denken we minder positief denken en worden de irrationele gedachten groter. <br><br> Psychologische stress is ongezond en door je gedachtes in perspectief te zien, kan je er realistischer naar kijken en er wat aan doen. Hoe meer gestresst we zijn, hoe negatiever we denken en dat geeft weer meer stress.",
+    "description": "Door irrationele, negatieve gedachten krijgen we meer stress, waardoor we minder positief denken en worden de irrationele gedachten groter. <br><br> Psychologische stress is ongezond en door je gedachtes in perspectief te zien, kan je er realistischer naar kijken en er wat aan doen. Hoe meer gestresst we zijn, hoe negatiever we denken en dat geeft weer meer stress.",
     "tasks": [
       {
         "icon": "position",
